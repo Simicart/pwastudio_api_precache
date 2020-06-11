@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Event/etc/events.xsd">
+    <event name="clean_cache_by_tags">
+        <observer name="simi_apiprecached_clean_cache_by_tags" 
+                  instance="Simi\Apiprecached\Observer\CleanCacheByTag" />
+    </event>
+</config>

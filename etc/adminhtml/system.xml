@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="simi" translate="label" sortOrder="1000">
+            <label>Simiconnector</label>
+        </tab>
+        <section id="apiprecache" translate="label" sortOrder="399" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>API Precached</label>
+            <tab>simi</tab>
+            <resource>Simi_Simi::config_simi</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="99" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="index_path" translate="label" type="textarea" sortOrder="149" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>PWA-studio index.html file</label>
+                    <comment>Should be inside dist folder of your package</comment>
+                    <depends>
+                        <field id="*/*/enable">1</field>
+                    </depends>
+                </field>
+                <field id="api_var_name" translate="label" type="text" sortOrder="199" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Var Name</label>
+                    <comment>Eg. PRECACHED_STORE_CONFIG</comment>
+                    <depends>
+                        <field id="*/*/enable">1</field>
+                    </depends>
+                </field>
+                <field id="api_url" translate="label" type="textarea" sortOrder="299" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API URL</label>
+                    <depends>
+                        <field id="*/*/enable">1</field>
+                    </depends>
+                    <comment>
+                        <![CDATA[
+                        <div style="max-width: 200px; overflow: auto; white-space: nowrap; display: block;">Eg. https://fashiontheme.pwa-commerce.com/Store/graphql?query=query%20storeConfigData(%24storeId%3A%20Int%2C%20%24currency%3A%20String)%20%7B%0A%20%20simiStoreConfig(storeId%3A%20%24storeId%2C%20currency%3A%20%24currency)%20%7B%0A%20%20%20%20store_id%0A%20%20%20%20currency%0A%20%20%20%20pwa_studio_client_ver_number%0A%20%20%20%20root_category_id%0A%20%20%20%20config_json%0A%20%20%20%20__typename%0A%20%20%7D%0A%20%20storeConfig%20%7B%0A%20%20%20%20id%0A%20%20%20%20copyright%0A%20%20%20%20code%0A%20%20%20%20website_id%0A%20%20%20%20locale%0A%20%20%20%20base_currency_code%0A%20%20%20%20default_display_currency_code%0A%20%20%20%20timezone%0A%20%20%20%20weight_unit%0A%20%20%20%20base_url%0A%20%20%20%20base_link_url%0A%20%20%20%20base_static_url%0A%20%20%20%20base_media_url%0A%20%20%20%20secure_base_url%0A%20%20%20%20secure_base_link_url%0A%20%20%20%20secure_base_static_url%0A%20%20%20%20secure_base_media_url%0A%20%20%20%20__typename%0A%20%20%7D%0A%20%20simiRootCate%20%7B%0A%20%20%20%20id%0A%20%20%20%20name%0A%20%20%20%20product_count%0A%20%20%20%20path%0A%20%20%20%20position%0A%20%20%20%20children%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20level%0A%20%20%20%20%20%20url_key%0A%20%20%20%20%20%20url_path%0A%20%20%20%20%20%20path%0A%20%20%20%20%20%20include_in_menu%0A%20%20%20%20%20%20position%0A%20%20%20%20%20%20image%0A%20%20%20%20%20%20children%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20level%0A%20%20%20%20%20%20%20%20url_key%0A%20%20%20%20%20%20%20%20url_path%0A%20%20%20%20%20%20%20%20path%0A%20%20%20%20%20%20%20%20include_in_menu%0A%20%20%20%20%20%20%20%20position%0A%20%20%20%20%20%20%20%20image%0A%20%20%20%20%20%20%20%20children%20%7B%0A%20%20%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20%20%20level%0A%20%20%20%20%20%20%20%20%20%20url_key%0A%20%20%20%20%20%20%20%20%20%20url_path%0A%20%20%20%20%20%20%20%20%20%20path%0A%20%20%20%20%20%20%20%20%20%20include_in_menu%0A%20%20%20%20%20%20%20%20%20%20position%0A%20%20%20%20%20%20%20%20%20%20image%0A%20%20%20%20%20%20%20%20%20%20children%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20%20%20%20%20level%0A%20%20%20%20%20%20%20%20%20%20%20%20url_key%0A%20%20%20%20%20%20%20%20%20%20%20%20url_path%0A%20%20%20%20%20%20%20%20%20%20%20%20path%0A%20%20%20%20%20%20%20%20%20%20%20%20include_in_menu%0A%20%20%20%20%20%20%20%20%20%20%20%20position%0A%20%20%20%20%20%20%20%20%20%20%20%20image%0A%20%20%20%20%20%20%20%20%20%20%20%20__typename%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20__typename%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20__typename%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20__typename%0A%20%20%20%20%7D%0A%20%20%20%20__typename%0A%20%20%7D%0A%7D%0A&operationName=storeConfigData&variables=%7B%7D
+                        </div>
+                        ]]>
+                    </comment>
+                </field>
+                <field id="last_run_time" translate="label" type="textarea" sortOrder="149" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Last run time</label>
+                    <depends>
+                        <field id="*/*/enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
