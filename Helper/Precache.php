@@ -43,8 +43,13 @@ class Precache extends \Magento\Framework\App\Helper\AbstractHelper
                 $index_path = $this->getStoreConfig('apiprecache/general/index_path');
                 $api_var_name = $this->getStoreConfig('apiprecache/general/api_var_name');
                 $api_url = $this->getStoreConfig('apiprecache/general/api_url');
-                $api_result = file_get_contents($api_url);
-                $index_content = file_get_contents($index_path);
+                $ctx = stream_context_create(array('http'=>
+                    array(
+                        'timeout' => 10,  //1200 Seconds is 20 Minutes
+                    )
+                ));
+                $api_result = file_get_contents($api_url, false, $ctx);
+                $index_content = file_get_contents($index_path, false, $ctx);
                 if ($api_result && $index_content) {
                     $index_content = $this->deleteAllBetween('/*precacheinside*/', '/*endprecacheinside*/', $index_content);
                     $contentToInsert = '';
